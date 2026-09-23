@@ -47,40 +47,41 @@ public:
     cout << endl;
   }
 
-
   void Heapify(int index)
   {
-    int largest=index;
-    int left=2*index+1;
-    int right= 2*index+2;
+    int largest = index;
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
 
-    if(left<size && arr[left]> arr[largest])
+    if (left < size && arr[left] > arr[largest])
     {
-      largest=left;
+      largest = left;
     }
-    if(right<size && arr[right]> arr[largest])
+    if (right < size && arr[right] > arr[largest])
     {
-      largest= right;
+      largest = right;
     }
 
-    if(largest!=index)
+    if (largest != index)
     {
-      swap(arr[index],arr[largest]);
+
+      swap(arr[index], arr[largest]);
       Heapify(largest);
     }
   }
   void Delete()
   {
-    if(size==0)
+    if (size == 0)
     {
-      cout<<"Heap UnderFlow\n";
+      cout << "Heap UnderFlow\n";
       return;
     }
-    cout<<arr[0]<<"  ""deleted from heap";
-    arr[0]= arr[size-1];
+    cout << arr[0] << "  "
+                      "deleted from heap";
+    arr[0] = arr[size - 1];
     size--;
 
-    if(size==0)
+    if (size == 0)
     {
       return;
     }
@@ -97,9 +98,9 @@ int main()
   H1.insert(44);
   H1.insert(46);
   H1.insert(47);
-  cout<<endl;
+  cout << endl;
   H1.print();
   H1.Delete();
-  cout<<endl;
+  cout << endl;
   H1.print();
 }
