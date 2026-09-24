@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 // Deque implementation using linked list
@@ -123,110 +123,138 @@ using namespace std;
 // cout<<d.end()<<endl;
 // }
 
-
 // Dequeue implementation  using array
 
-class Dequeue{
-    int front , rear,size;
+class Dequeue
+{
+    int front, rear, size;
     int *arr;
-    public:
-    Dequeue(int n){
-        size=n;
-        arr= new int[n];
-        front=rear=-1;
-    }
-    bool IsEmpty(){
-        return front==-1;
-    }
-    bool IsFull(){
-        return (rear+1)%size==front;
-    }
-    void push_front(int x){
-       if(IsEmpty()){
-        front=rear=0;
-        cout<<"pushed "<<x<<"  in front\n";
-        arr[0]=x;
-        return;
-       }
-       else if(IsFull()){
-        cout<<"Dequeue Overflow\n";
-        return;
-       }
-       else{
-        front=(front-1+size)%size;
-        arr[front]=x;
-        cout<<"pushed "<<x<<" in front\n";
-        return ;
-       }
-    }
 
-    void push_back(int x){
-       if(IsEmpty()){
-        front=rear=0;
-        cout<<"pushed "<<x<<"  in back\n";
-        arr[0]=x;
-        return;
-       }
-       else if(IsFull()){
-        cout<<"Dequeue Overflow\n";
-        return;
-       }
-       else{
-        rear=(rear+1)%size;
-        arr[rear]=x;
-        cout<<"pushed "<<x<<" in back\n";
-        return ;
-       }
+public:
+    Dequeue(int n)
+    {
+        size = n;
+        arr = new int[n];
+        front = rear = -1;
     }
-    void pop_front(){
-        if(IsEmpty()){
-            cout<<"Dequeue Underflow\n";
+    bool IsEmpty()
+    {
+        return front == -1;
+    }
+    bool IsFull()
+    {
+        return (rear + 1) % size == front;
+    }
+    void push_front(int x)
+    {
+        if (IsEmpty())
+        {
+
+            front = rear = 0;
+            cout << "pushed " << x << "  in front\n";
+            arr[0] = x;
             return;
         }
-        else{
-            if(front==rear){
-                front=rear-1;
-            }
-            else{
-                front=(front+1)%size;
-            }
+        else if (IsFull())
+        {
+            cout << "Dequeue Overflow\n";
+            return;
+        }
+        else
+        {
+            front = (front - 1 + size) % size;
+            arr[front] = x;
+            cout << "pushed " << x << " in front\n";
+            return;
         }
     }
 
-       void pop_back(){
-        if(IsEmpty()){
-            cout<<"Dequeue Underflow\n";
+    void push_back(int x)
+    {
+        if (IsEmpty())
+        {
+            front = rear = 0;
+            cout << "pushed " << x << "  in back\n";
+            arr[0] = x;
             return;
         }
-        else{
-            if(front==rear){
-                front=rear=-1;
+        else if (IsFull())
+        {
+            cout << "Dequeue Overflow\n";
+            return;
+        }
+        else
+        {
+            rear = (rear + 1) % size;
+            arr[rear] = x;
+            cout << "pushed " << x << " in back\n";
+            return;
+        }
+    }
+    void pop_front()
+    {
+        if (IsEmpty())
+        {
+            cout << "Dequeue Underflow\n";
+            return;
+        }
+        else
+        {
+            if (front == rear)
+            {
+                front = rear - 1;
             }
-            else{
-                rear=(rear-1+size)%size;
+            else
+            {
+                front = (front + 1) % size;
             }
         }
     }
-    int start(){
-        if(IsEmpty())
-        return -1;
-        else{
+
+    void pop_back()
+    {
+        if (IsEmpty())
+        {
+            cout << "Dequeue Underflow\n";
+            return;
+        }
+        else
+        {
+            if (front == rear)
+            {
+                front = rear = -1;
+            }
+            else
+            {
+                rear = (rear - 1 + size) % size;
+            }
+        }
+    }
+    int start()
+    {
+        if (IsEmpty())
+            return -1;
+        else
+        {
             return arr[front];
         }
     }
-     int end(){
-        if(IsEmpty())
-        return -1;
-        else{
+    int end()
+    {
+        if (IsEmpty())
+            return -1;
+        else
+        {
             return arr[rear];
         }
     }
 };
-int main(){
+int main()
+{
     Dequeue d(4);
     d.push_back(7);
     d.push_front(9);
     d.push_front(19);
-    cout<<d.start()<<endl;
-    cout<<d.IsEmpty()<<endl;
+    cout << d.start() << endl;
+    cout << d.IsEmpty() << endl;
 }
